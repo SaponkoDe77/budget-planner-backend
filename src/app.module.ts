@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import configuration from './config/configuration';
-import { DatabaseModule } from './db/postgres.module';
+import { DatabaseModule } from './database/postgres.module';
 import { AppController } from './app.controller';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { AppController } from './app.controller';
       load: [configuration],
     }),
     DatabaseModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [],
